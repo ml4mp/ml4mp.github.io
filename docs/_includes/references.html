@@ -1,0 +1,25 @@
+<div>
+    <ul>
+        {% for ref in page.references %}
+        <li> <div>
+            <h4><a href="{{ ref.link }}"> {{ ref.title }} </a></h4>
+            <span style="font-style: italic;">{{ ref.date }} • {{ ref.author }}</span>
+            <p>{{ ref.abstract }}</p>
+        </div></li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% if page.use_math %}
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script> 
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$']]
+    }
+  }; 
+</script>
+{% endif %}
