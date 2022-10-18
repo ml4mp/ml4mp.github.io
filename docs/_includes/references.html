@@ -1,13 +1,41 @@
-<div>
-    <ul>
-        {% for ref in page.references %}
-        <li> <div>
-            <h4><a href="{{ ref.link }}"> {{ ref.title }} </a></h4>
-            <span style="font-style: italic;">{{ ref.date }} • {{ ref.author }}</span>
-            <p>{{ ref.abstract }}</p>
-        </div></li>
-        {% endfor %}
-    </ul>
+<style type="text/css">
+  .references ol {
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .references li {
+    display: block;
+    margin-bottom: .5em;
+    margin-left: 2em;
+  }
+  .references li::before {
+    display: inline-block;
+    content: "[" counter(item) "]";
+    counter-increment: item;
+    width: 1.7em;
+    margin-left: -2em;
+    margin-top: 2px;
+    vertical-align: top;
+  }
+  .reference-entry {
+    display: inline-block;
+  }
+</style>
+
+<div class="references">
+  <ol>
+    {% for ref in page.references %}
+    <li> <div class="reference-entry">
+      <h4>
+        {% if ref.link %} <a href="{{ ref.link }}"> {% endif %} {{ ref.title }} {% if ref.link %} </a> {% endif %}
+        {% if ref.arxiv %} <a href="https://arxiv.org/abs/{{ ref.arxiv }}">[{{ ref.arxiv }}]</a> {% endif %}
+      </h4>
+      <span style="font-style: italic;">{{ ref.date }} • {{ ref.author }}</span>
+      <p>{{ ref.abstract }}</p>
+    </div></li>
+    {% endfor %}
+  </ol>
 </div>
 
 
