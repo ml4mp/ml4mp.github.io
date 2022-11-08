@@ -11,8 +11,8 @@ If you are interested in joining, please have a look [here]({{ site.baseurl }}{%
   border-left: 6px solid #2a7ae2; padding: 0pt 5pt; margin-bottom: 5pt"></div>
 
 <script>
-var next = new Date("2022-09-29T10:00:00+02:00")
+var next = new Date("2022-09-29T08:00:00+00:00")
 var today = new Date();
-while (next < today) { next.setDate(next.getDate()+14); };
+while (next < today) { next.setTime(next.getTime() + 14*24*60*60*1000); };
 document.getElementById("next-meeting").innerHTML = `The next meeting will be ${next}.`;
 </script>
